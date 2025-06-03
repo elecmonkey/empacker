@@ -1,0 +1,56 @@
+{
+  "name": "@elecmonkey/empacker",
+  "version": "0.1.0",
+  "description": "A JavaScript/TypeScript library bundler powered by esbuild",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "bin": {
+    "empacker": "./dist/cli.cjs"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/elecmonkey/empacker.git"
+  },
+  "scripts": {
+    "bootstrap": "tsc && node dist-tsc/cli.js build && rm -rf dist-tsc",
+    "build": "empacker build",
+    "type": "tsc --noEmit",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest run --coverage",
+    "dev": "tsc --watch"
+  },
+  "keywords": [
+    "bundler",
+    "esbuild",
+    "typescript",
+    "javascript",
+    "build-tool"
+  ],
+  "author": "Elecmonkey <elecmonkey@hotmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@elecmonkey/empacker": "^0.1.0",
+    "chalk": "^5.4.1",
+    "commander": "^14.0.0",
+    "esbuild": "^0.25.5",
+    "glob": "^11.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.29",
+    "@vitest/coverage-v8": "3.2.0",
+    "@vitest/ui": "^3.2.0",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "packageManager": "pnpm@8.15.0"
+}
