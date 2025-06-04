@@ -1,5 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import * as esbuild from 'esbuild';
 import { EmpackerConfig } from './types.js';
 import { fileExists } from './utils.js';
 
@@ -43,8 +44,40 @@ async function loadConfigFile(filePath: string): Promise<EmpackerConfig> {
     if (ext === '.json') {
       const content = fs.readFileSync(filePath, 'utf-8');
       return JSON.parse(content);
+    } else if (ext === '.ts') {
+      // 对于 TypeScript 文件，使用 esbuild 编译后再导入
+      const result = await esbuild.build({
+        entryPoints: [filePath],
+        bundle: false,
+        platform: 'node',
+        target: 'node16',
+        format: 'esm',
+        write: false,
+        loader: {
+          '.ts': 'ts'
+        }
+      });
+
+      if (result.outputFiles && result.outputFiles[0]) {
+        // 创建临时文件
+        const tempPath = filePath.replace('.ts', '.temp.mjs');
+        fs.writeFileSync(tempPath, result.outputFiles[0].text);
+        
+        try {
+          // 导入编译后的文件
+          const configModule = await import(path.resolve(tempPath));
+          return configModule.default || configModule;
+        } finally {
+          // 清理临时文件
+          if (fileExists(tempPath)) {
+            fs.unlinkSync(tempPath);
+          }
+        }
+      } else {
+        throw new Error('编译 TypeScript 配置文件失败');
+      }
     } else {
-      // 对于 .js, .ts, .mjs 文件，使用动态导入
+      // 对于 .js, .mjs 文件，使用动态导入
       const configModule = await import(path.resolve(filePath));
       return configModule.default || configModule;
     }
