@@ -178,6 +178,12 @@ export class Empacker {
         external: this.config.external,
         metafile: true,
         write: true,
+        loader: {
+          '.ts': 'ts',
+          '.tsx': 'tsx',
+          '.js': 'js',
+          '.jsx': 'jsx'
+        },
         ...this.config.esbuildOptions
       };
 
@@ -358,6 +364,12 @@ export class Empacker {
         minify: this.config.minify,
         external: this.config.external,
         write: true,
+        loader: {
+          '.ts': 'ts',
+          '.tsx': 'tsx',
+          '.js': 'js',
+          '.jsx': 'jsx'
+        },
         ...this.config.esbuildOptions
       };
 
