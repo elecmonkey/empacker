@@ -1,5 +1,5 @@
 // empacker.config.ts
-import type { EmpackerConfig } from './src/types';
+import type { EmpackerConfig } from '@elecmonkey/empacker';
 
 const config: EmpackerConfig = {
   // 多任务配置
