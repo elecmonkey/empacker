@@ -20,8 +20,8 @@ dependencies:
 
 devDependencies:
   '@elecmonkey/empacker':
-    specifier: ^0.1.1
-    version: 0.1.1
+    specifier: ^0.1.2
+    version: 0.1.2
   '@types/node':
     specifier: ^22.15.29
     version: 22.15.29
@@ -79,8 +79,8 @@ packages:
     engines: {node: '>=18'}
     dev: true
 
-  /@elecmonkey/empacker@0.1.1:
-    resolution: {integrity: sha512-W78//fd+q7bAJ0ewp6wnKzfioc4bNFLpwCd5TAxdNu0jrEpm9ZMxJgJC0oy4iClwwBVgi7yjbcWmGCoGZcggOA==}
+  /@elecmonkey/empacker@0.1.2:
+    resolution: {integrity: sha512-d/E9c8v13nz9CRd2LRy518RC23hjlhIQiipa5wXhia4Cgg7Jt6IRufvEExaj7kyIBjB58A8VFy8AevjShClo0w==}
     engines: {node: '>=16.0.0'}
     hasBin: true
     dependencies:
