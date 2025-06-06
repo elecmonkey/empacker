@@ -4,9 +4,9 @@ import { Command } from 'commander';
 import chalk from 'chalk';
 import * as fs from 'fs';
 import * as path from 'path';
-import { Empacker } from './bundler.js';
-import { loadConfig, createDefaultConfig, mergeConfig } from './config.js';
-import { EmpackerConfig } from './types.js';
+import { Empacker } from './bundler';
+import { loadConfig, createDefaultConfig, mergeConfig } from './config';
+import { EmpackerConfig } from './types';
 
 const program = new Command();
 

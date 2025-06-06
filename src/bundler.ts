@@ -3,8 +3,8 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { spawn } from 'child_process';
 import chalk from 'chalk';
-import { EmpackerConfig, EmpackerTaskConfig, BuildResult, MultiBuildResult } from './types.js';
-import { resolveEntries, ensureDir, formatFileSize, formatBuildTime, fileExists } from './utils.js';
+import { EmpackerConfig, EmpackerTaskConfig, BuildResult, MultiBuildResult } from './types';
+import { resolveEntries, ensureDir, formatFileSize, formatBuildTime, fileExists } from './utils';
 
 export class Empacker {
   private config: Required<EmpackerConfig>;

@@ -1,8 +1,8 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as esbuild from 'esbuild';
-import { EmpackerConfig } from './types.js';
-import { fileExists } from './utils.js';
+import { EmpackerConfig } from './types';
+import { fileExists } from './utils';
 
 const CONFIG_FILES = [
   'empacker.config.js',
